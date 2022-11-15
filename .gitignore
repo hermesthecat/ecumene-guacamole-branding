@@ -1,0 +1,7 @@
+.idea
+.fleet
+.code
+.vscode
+*.pyc
+node_modules
+junk

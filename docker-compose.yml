@@ -1,0 +1,46 @@
+version: '3.3'
+
+# zip -r ../extensions/branding.zip ./* && mv -f ../extensions/branding.zip ../extensions/branding.jar && docker restart guacamole
+
+services:
+    guacamole:
+        container_name: guacamole
+        image: guacamole/guacamole
+        restart: unless-stopped
+        environment:
+            GUACD_HOSTNAME: 'guacd'
+            POSTGRES_DATABASE: guacamole
+            POSTGRES_HOSTNAME: postgres
+            POSTGRES_PASSWORD: 'guacamole'
+            POSTGRES_USER: guacamole
+            GUACAMOLE_HOME: /data
+        ports:
+            - '8888:80'
+            - '3333:8080'
+        depends_on:
+            - postgres
+            - guacd
+        volumes:
+            - ./extensions:/data/extensions
+    guacd:
+        container_name: guacd
+        image: guacamole/guacd
+        restart: unless-stopped
+        ports:
+            - '4822:4822'
+    postgres:
+        container_name: postgres
+        environment:
+            PGDATA: /var/lib/postgresql/data/guacamole
+            POSTGRES_DB: guacamole
+            POSTGRES_PASSWORD: 'guacamole'
+            POSTGRES_USER: guacamole
+        ports:
+            - '5432:5432'
+        image: postgres:13.4-buster
+        restart: unless-stopped
+        volumes:
+            - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+            - pgdata:/var/lib/postgresql/data
+volumes:
+    pgdata:
