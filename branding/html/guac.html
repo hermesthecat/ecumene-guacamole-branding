@@ -1,0 +1,95 @@
+<meta name="before-children" content=".login-ui">
+
+
+<div id="tsparticles"></div>
+<script>
+
+const reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+const isMobile = window.innerWidth < 1024;
+
+const onReady = () => {
+    $('head').append('<meta name="darkreader-lock">');
+
+    (function(tsparticlesEngine){"use strict";$.fn.particles=function(){var _this=this;var baseId="tsparticles";var init=function init(options,callback){_this.each(function(index,element){if(element.id===undefined){element.id=baseId+Math.floor(tsparticlesEngine.getRandom()*1e3)}tsparticlesEngine.tsParticles.load(element.id,options).then(callback)})};var ajax=function ajax(jsonUrl,callback){_this.each(function(index,element){if(element.id===undefined){element.id=baseId+Math.floor(tsparticlesEngine.getRandom()*1e3)}tsparticlesEngine.tsParticles.loadJSON(element.id,jsonUrl).then(callback)})};return{init:init,ajax:ajax}}})(window);
+
+    //import('https://cdn.jsdelivr.net/npm/jquery-particles')
+    //console.log('READY', $('.form-field'));
+
+
+
+    $('.form-field input').focusin((e) => {
+        $(e.target.parentElement.parentElement.parentElement).find('label').addClass('active');
+    }).focusout((e) => {
+        if (e.target.value.length === 0)
+            $(e.target.parentElement.parentElement.parentElement).find('label').removeClass('active');
+    });
+
+    console.log('Creating particles...', $('#tsparticles'));
+    $("#tsparticles").particles().init({
+        background: {},
+        fpsLimit: 60,
+        particles: {
+            collisions: {
+                enable: false,
+            },
+            move: {
+                enable: !reducedMotion,
+                direction: "up",
+                outModes: {
+                    default: "out",
+                },
+                speed: 0.2,
+                random: true,
+                straight: false,
+            },
+            number: {
+                density: {
+                    enable: true,
+                    area: 600,
+                },
+                value: isMobile ? 140 : 80,
+            },
+            opacity: {
+                value: 0.8,
+                random: true,
+                anim: {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            shape: {
+                type: 'image',
+                image: [
+                    {
+                        src: 'app/ext/ecumene/images/particle.png',
+                        width: 30,
+                        height: 30,
+                    },
+                    {
+                        src: 'app/ext/ecumene/images/particle-dark.png',
+                        width: 30,
+                        height: 30,
+                    },
+                    {
+                        src: 'app/ext/ecumene/images/particle-bright.png',
+                        width: 30,
+                        height: 30,
+                    },
+                ]
+            },
+            size: {
+                value: {min: 0.3, max: 10},
+            },
+        },
+        detectRetina: true,
+    }, (container) => {
+
+    })
+
+}
+
+//$(window).load(() => $(document.ready(onReady)));
+$(document).ready(onReady);
+</script>

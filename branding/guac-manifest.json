@@ -6,25 +6,26 @@
     "translations/en.json"
   ],
   "js" : [
+    "js/tsparticles-engine.js",
+    "js/tsparticles.js",
     "js/main.js"
   ],
   "html" : [
-    "html/index.html"
+    "html/head.html",
+    "html/guac.html",
+    "html/logo.html"
   ],
   "css" : [
-    "css/login-override.css",
     "css/app-styles.css"
   ],
   "resources" : {
-    "images/reclaimer.png" : "image/png",
-    "images/bluereclaimer.png" : "image/png",
-    "images/night.jpg" : "image/jpg",
-    "images/blue1.jpg" : "image/png",
-    "images/blue2.jpg" : "image/png",
-    "images/reach.jpg" : "image/jpg",
-    "images/tree.png" : "image/png",
-    "images/tree2.png" : "image/png",
-    "images/synth1.jpg" : "image/jpg"
+    "images/logo-reclaimer.png" : "image/png",
+    "images/particle.png" : "image/png",
+    "images/particle-bright.png" : "image/png",
+    "images/particle-dark.png" : "image/png",
+    "images/wall-blue.jpg" : "image/jpg",
+    "images/wall-blue-vertical.png" : "image/png",
+    "images/wall-blue-vertical-blur.png" : "image/png"
   }
 }
 

@@ -1,10 +1,21 @@
 <link rel="stylesheet" href="../css/app-styles.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../js/main.js" type="text/javascript"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!-- first include tsParticles engine -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-engine"></script>
+<!-- then include any tsParticles plugin needed -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles/tsparticles.bundle.min.js"></script>
+<!-- then include jquery wrapper -->
+<script src="https://cdn.jsdelivr.net/npm/jquery-particles"></script>
+
 <meta name="replace" content=".login-ui">
 
 
+
+
 <div class="app-login-ui ng-isolate-scope initial" ng-class="app-{error: loginError, continuation: isContinuation(), initial: !isContinuation()}" ng-switch-when="awaitingCredentials" help-text="loginHelpText" form="expectedCredentials" values="acceptedCredentials">
+    <div id="tsparticles"></div>
 
     <!-- Login error message -->
     <p class="app-login-error ng-scope" translate="" translate-values=""></p>
@@ -18,7 +29,7 @@
                 <!-- Guacamole version -->
 
 
-                <img class="app-logo" src="../images/bluereclaimer.png" alt="Ecumene">
+                <img class="app-logo" src="../images/logo-reclaimer.png" alt="Ecumene">
                 <div class="app-version">
                     <div class="app-name ng-binding">Ecumene</div>
                     <div class="app-version-number ng-binding">1.4.0</div>

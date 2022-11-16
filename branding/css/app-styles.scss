@@ -4,109 +4,164 @@ $screen-sm-min: 576px;
 $screen-md-min: 768px;
 $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
-
-// Small devices
 @mixin sm {
   @media (min-width: #{$screen-sm-min}) {
     @content;
   }
 }
-
-// Medium devices
 @mixin md {
   @media (min-width: #{$screen-md-min}) {
     @content;
   }
 }
-
-// Large devices
 @mixin lg {
   @media (min-width: #{$screen-lg-min}) {
     @content;
   }
 }
-
-// Extra large devices
 @mixin xl {
   @media (min-width: #{$screen-xl-min}) {
     @content;
   }
 }
+@mixin mobile {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
 
 html, body {
   margin: 0;
   padding: 0;
   background-color: #222;
   color: #eee;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
-.app-login-ui {
+div.login-ui {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   min-height:100vh;
   background-color: #222;
-  background-image: url('../images/blue2.jpg') !important;
   background-position: center center;
   background-attachment: fixed;
+  position: relative;
+  background-image: url('app/ext/ecumene/images/wall-blue.jpg'), url('../images/wall-blue.jpg') !important;
+  @include mobile {
+    //background-image: url('app/ext/ecumene/images/bluecyber1.jpg') !important;
+    background-size: cover;
+    background-image: url('app/ext/ecumene/images/wall-blue-vertical.png') !important;
+  }
 
-  .app-login-dialog-middle {
-    .app-login-dialog {
-      width: 90vw;
+  #tsparticles {
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .login-dialog-middle {
+    z-index: 1000;
+
+    $dialog-top-radius: 50rem;
+    $dialog-bottom-radius: 35rem;
+    .login-dialog {
       text-align: center;
-      background: rgba(255,255,255,.05);
-      backdrop-filter: blur(20px) brightness(1.2);
-      border-radius: 15em 15em 10em 10em;
+      border-radius: $dialog-top-radius $dialog-top-radius $dialog-bottom-radius $dialog-bottom-radius;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(18, 212, 255, 0.75);
       padding: 0 0 40px;
-      @include lg {
-        width: 280px;
+      width: 280px;
+      max-width: 280px;
+      background-color: rgba(255,255,255,0.95);
+      //background-color: rgba(255,255,255,0.2);
+      background-image: url('app/ext/ecumene/images/wall-blue-vertical-blur.png');
+      background-size: auto 100vh;
+      background-position: center center;
+      background-attachment: scroll;
+      overflow: hidden;
+      @supports (backdrop-filter: none) {
+        background-color: rgba(255,255,255,.05);
+        background-image: none;
+        backdrop-filter: blur(20px) brightness(1.2);
+      }
+      @include mobile {
+        width: 90vw;
+        max-width: 90vw;
       }
 
       .app-logo {
         width: 100%;
         height: auto;
-        filter: drop-shadow(0 0 20px rgba(0, 0, 255, 0.5));
+        filter: drop-shadow(0 0 10px rgba(1, 188, 255, 0.9));
         transition-property: filter;
         transition-duration: 500ms;
-        &:hover {
-          filter: drop-shadow(0 0 20px rgba(31, 255, 249, 0.5));
+        @include mobile {
+          width: 85%;
         }
       }
       .app-name {
-        font-size: 24pt;
         font-family: 'Coda', sans-serif;
         color: rgba(255,255,255,0.8);
-        margin-bottom: 1em;
+        font-weight: normal;
+        user-select: none;
+        font-size: 24pt;
+        margin-bottom: 1rem;
+        text-transform: none;
+        @include mobile {
+          margin-top: 2rem;
+          margin-bottom: 3rem;
+        }
       }
-      .app-version-number {
+      .version-number {
         width: 100px;
         text-align: center;
         position: absolute;
         bottom: 6px;
         right: 50%;
-        margin-right: -50px;
+        margin: 0 -50px 0 0;
+        padding: 0;
+        font-style: normal;
+        opacity: 1;
         color: rgba(255,255,255,0.25);
         font-family: 'Coda', sans-serif;
-        font-size: 9pt;
         user-select: none;
+        font-size: 9pt;
+        background: none;
+        @include mobile {
+          bottom: 10px;
+        }
       }
 
-      .app-login-fields {
-        .app-fields {
-          margin-bottom: 2em;
+      .login-fields {
+        .fields {
+          margin-bottom: 2rem;
+          @include mobile {
+            margin-bottom: 4rem;
+          }
         }
-        .app-labeled-field {
+        .labeled-field {
           position: relative;
-          margin-bottom: 1.25em;
-          .app-field-header {
+          margin-bottom: 1.25rem;
+          @include mobile {
+            margin-bottom: 2.5rem;
+          }
+          .field-header {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
+            margin: auto;
+            overflow: visible;
             label {
               text-align: center;
               font-family: "Coda", sans-serif;
@@ -123,56 +178,67 @@ html, body {
               transition-property: color, font-size, height, line-height, top;
               transition-duration: 150ms;
               transition-timing-function: ease-out;
-
+              @include mobile {
+                height: 40px;
+                line-height: 40px;
+              }
               &.active {
                 color: rgba(255,255,255,0.5);
                 font-size: 6pt;
                 height: 10px;
                 line-height: 10px;
                 top: -10px;
+                @include mobile {
+                  font-size: 8pt;
+                  height: 10px;
+                  line-height: 10px;
+                  top: -10px;
+                }
               }
-
-              ///font-family: "Coda", sans-serif;
-              ///font-size: 11pt;
-              ///margin-top: 1.25em;
-              ///position: absolute;
-              ///top: 0;
-              ///left: 50%;
-              ///user-select: none;
             }
           }
-          .app-form-field {
-            .app-text-field, .app-password-field {
-              padding: 0 1em;
+          .form-field {
+            .text-field, .password-field {
+              padding: 0 1rem;
+              overflow-x: hidden;
+              height: 30px;
+              @include mobile {
+                height: 40px;
+              }
               input {
                 user-select: none;
                 font-size: 11pt;
-                height: 30px;
+                border-radius: 15px;
                 border-width: 1px;
                 border-style: solid;
                 border-color: rgba(255,255,255,0.15);
                 background-color: rgba(255,255,255,0.05);
                 box-shadow: inset 0 0 4px rgba(255,255,255,0.05);
-                border-radius: 16px;
+                color: #eee;
                 padding: 4px 8px;
                 font-family: "Coda", sans-serif;
                 text-align: center;
-                color: #eee;
                 width: 100%;
-                margin: 0 1em 0 0;
+                margin: 0 1rem 0 0;
                 transition-duration: 150ms;
                 transition-timing-function: ease-out;
                 transition-property: border-color, background-color, box-shadow;
+                height: 30px;
+                @include mobile {
+                  height: 40px;
+                  line-height: 40px;
+                  border-radius: 20px;
+                }
                 &:hover {
-                  border-color: rgba(255,255,255,0.15);
-                  background-color: rgba(255,255,255,0.05);
+                  border-color: rgba(255,255,255,0.2);
+                  background-color: rgba(255,255,255,0.08);
                   box-shadow: inset 0 0 8px rgba(255,255,255,0.1);
                 }
                 &:focus {
                   outline: none;
                   border-color: rgba(255,255,255,0.4);
-                  background-color: rgba(255,255,255,0.1);
-                  box-shadow: inset 0 0 6px rgba(255,255,255,0.10);
+                  background-color: rgba(255,255,255,0.12);
+                  box-shadow: inset 0 0 6px rgba(255,255,255,0.14);
                 }
               }
             }
@@ -181,31 +247,55 @@ html, body {
       }
 
 
-      .app-buttons {
-        .app-login, .app-continue-login {
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        @include mobile {
+          margin-bottom: 2rem;
+        }
+
+        .login, .continue-login {
+          width: 100px;
           border-width: 1px;
           border-style: solid;
           border-color: rgba(255,255,255,0.25);
           background-color: rgba(255,255,255,0.1);
           box-shadow: inset 0 0 4px rgba(255,255,255,0.05);
-          border-radius: 16px;
-          padding: 0.25em 1.25em;
+          padding: 0.25rem 1.25rem;
+          //display: inline-block !important;
+          text-shadow: none;
+          min-width: 0;
           font-family: "Coda", sans-serif;
           text-align: center;
           font-size: 10pt;
           color: #eee;
-          margin: 0 0.25em;
+          margin: 0 0.25rem;
           transition-duration: 150ms;
           transition-timing-function: ease-out;
           transition-property: border-color, background-color, box-shadow;
+          //line-height: 30px;
+          height: 30px;
+          border-radius: 15px;
+          text-transform: uppercase;
+          font-weight: normal;
+          @include mobile {
+            height: 40px;
+            //line-height: 40px;
+            border-radius: 20px;
+            padding: 0.25rem 2rem;
+            font-size: 10pt;
+            text-transform: uppercase;
+          }
           &:hover {
-            border-color: rgba(255,255,255,0.25);
-            background-color: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+            background-color: rgba(255,255,255,0.15);
             box-shadow: inset 0 0 6px rgba(255,255,255,0.1);
           }
           &:active {
-            border-color: rgba(255,255,255,0.25);
-            background-color: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            background-color: rgba(255,255,255,0.25);
             box-shadow: inset 0 0 6px rgba(255,255,255,0.3);
           }
         }
