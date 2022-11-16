@@ -5,3 +5,7 @@
 *.pyc
 node_modules
 junk
+
+*.zip
+*.jar
+*.bak

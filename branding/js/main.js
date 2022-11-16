@@ -22,5 +22,13 @@ const randomProperty = (obj) => {
 
 const bg = randomProperty(wallpapers)
 
-let elem = document.querySelector('div.login-ui');
-elem.style.backgroundImage= bg.url;
+//let elem = document.querySelector('div.login-ui');
+//elem.style.backgroundImage= bg.url;
+$(document).ready(() => {
+    $('.app-form-field input').click((e) => {
+        $(e.target.parentElement.parentElement.parentElement).find('label').addClass('active');
+    })
+    $('.app-form-field input').focusout((e) => {
+        $(e.target.parentElement.parentElement.parentElement).find('label').removeClass('active');
+    })
+});

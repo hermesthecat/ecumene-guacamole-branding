@@ -1,151 +1,17 @@
-div.login-ui {
-  background-color: #333;
-  background-image: url("app/ext/ecumene/images/blue2.jpg") !important;
-  /*background-position: center 40%*/
-  background-position: center center;
-  background-size: 100% auto;
-}
-div.login-ui .login-dialog {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px) brightness(1.2);
-  border-radius: 15em 15em 10em 10em;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(18, 212, 255, 0.75);
-  padding: 0 0 40px;
-  width: 14em;
-}
-div.login-ui .login-dialog .version .app-name {
-  font-size: 32px;
-  color: #eee;
-}
-div.login-ui .login-dialog .version .version-number {
-  background: none;
-  right: calc(50% - 37.5px);
-  width: 50px;
-}
-div.login-ui .login-dialog .logo {
-  background-image: url("app/ext/ecumene/images/bluereclaimer.png");
-  background-repeat: no-repeat;
-  background-position: top center;
-  width: 14em;
-  height: 14em;
-  background-size: 100% auto;
-  margin: 0 auto -1em auto;
-}
-div.login-ui .login-dialog .buttons {
-  padding: 0 1em;
-  margin: 0;
-  text-align: center;
-}
-div.login-ui .login-dialog .buttons input[type=submit], div.login-ui .login-dialog .buttons button, div.login-ui .login-dialog .buttons a.button {
-  color: rgb(255, 255, 255);
-  background-color: rgba(0, 0, 0, 0.25);
-  transition-duration: 150ms;
-  transition-property: background-color;
-  transition-timing-function: ease-out;
-  width: auto;
-  padding: 0.25em 2em;
-  border-radius: 10em;
-}
-div.login-ui .login-dialog .buttons input[type=submit]:hover, div.login-ui .login-dialog .buttons button:hover, div.login-ui .login-dialog .buttons a.button:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-div.login-ui .login-fields {
+/* Error: Undefined mixin.
+ *    ,
+ * 13 | /     @include media(">phone")
+ * 14 | \         width: 200px
+ *    '
+ *   login-override.sass 13:5  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
   padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Undefined mixin.\a    \2577 \a 13 \2502  \250c      @include media(">phone")\a 14 \2502  \2514          width: 200px\a    \2575 \a   login-override.sass 13:5  root stylesheet';
 }
-div.login-ui .login-fields .labeled-field.empty input {
-  background-color: rgba(0, 0, 0, 0.15);
-  color: #eee;
-  transition-duration: 150ms;
-  transition-property: background-color;
-  transition-timing-function: ease-out;
-}
-div.login-ui .login-fields .labeled-field input:focus {
-  background-color: rgba(0, 0, 0, 0.25);
-  outline: none;
-}
-
-.field-header {
-  color: rgba(255, 255, 255, 0.5);
-  padding-left: 8px;
-}
-
-body {
-  background: #333;
-  color: #eee;
-}
-
-.caption, .list-item .name, input {
-  color: #eee;
-}
-
-.header {
-  background: linear-gradient(0deg, rgb(68, 68, 68) 0%, rgb(57, 57, 57) 25%, rgb(85, 85, 85) 100%);
-}
-
-.header .filter input {
-  background: #666;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.icon, .menu-indicator, .user-menu .menu-dropdown .menu-title {
-  color: #111;
-}
-
-.list-item:not(.selected) .caption:hover {
-  background: linear-gradient(0deg, rgba(51, 51, 51, 0.5) 0%, rgb(74, 74, 74) 50%, rgba(51, 51, 51, 0.5) 100%);
-}
-
-div.location, input[type=text], input[type=email], input[type=number], input[type=password], textarea {
-  background: #666;
-}
-
-.menu-dropdown .menu-contents {
-  background-color: #444;
-  color: #eee;
-}
-
-a.ng-binding {
-  color: #eee;
-}
-
-a.ng-binding:hover {
-  color: white;
-}
-
-.menu-dropdown .menu-contents li a {
-  color: #111;
-}
-.menu-dropdown .menu-contents li a:hover {
-  color: #000;
-  background-color: #aaa;
-}
-
-.user a, .user-group a, .connection a, .connection-group a, .user a:visited, .user-group a:visited, .connection a:visited, .connection-group a:visited {
-  color: #eee;
-}
-
-.page-tabs .page-list li a[href]:visited {
-  color: #eee;
-}
-
-.page-tabs .page-list li a[href]:hover, .section-tabs li a:hover {
-  background-color: #555;
-}
-
-.page-tabs .page-list li a[href].current, .page-tabs .page-list li a[href].current:hover, .section-tabs li a.current, .section-tabs li a.current:hover {
-  background-color: #222;
-}
-
-.recent-connections .connection:hover {
-  background-color: #444;
-}
-
-.menu {
-  background-color: #333;
-}
-
-.clipboard, .clipboard-service-target {
-  background-color: #444;
-}
-
-/*# sourceMappingURL=login-override.css.map */

@@ -1,6 +1,23 @@
 $logosize: 14em
 $backblurstrength: 20px
 $backdark: 1.1
+$dialog-bg: rgba(255,255,255,.05)
+$button-bg: rgba(0,0,0,.15)
+
+$sm: 640px
+$med: 768px
+$lg: 1024px
+
+.app-login-ui
+    //@include media(">phone", "<tablet")
+    @include media(">phone")
+        width: 200px
+    @media screen and (max-width: $sm)
+        width: 90vw
+
+
+    .app-logo
+        max-width: 200px
 
 
 div.login-ui

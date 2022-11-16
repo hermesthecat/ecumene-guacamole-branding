@@ -8,8 +8,12 @@
   "js" : [
     "js/main.js"
   ],
+  "html" : [
+    "html/index.html"
+  ],
   "css" : [
-    "css/login-override.css"
+    "css/login-override.css",
+    "css/app-styles.css"
   ],
   "resources" : {
     "images/reclaimer.png" : "image/png",

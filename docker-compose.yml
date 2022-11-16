@@ -1,6 +1,6 @@
 version: '3.3'
 
-# zip -r ../extensions/branding.zip ./* && mv -f ../extensions/branding.zip ../extensions/branding.jar && docker restart guacamole
+# zip -FS0ry ../extensions/branding.zip ./* && cp -f ../extensions/branding.zip ../extensions/branding.jar && docker restart guacamole
 
 services:
     guacamole:
